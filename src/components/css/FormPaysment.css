@@ -1,0 +1,65 @@
+/* ลบ spinner บน input number */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* card หลัก */
+.card {
+    margin-top: 56px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fefefe;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s ease;
+}
+
+
+/* header ของ card */
+.card-header {
+    background: linear-gradient(45deg, #6c757d, #495057);
+    color: #fff;
+    border-bottom: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ปุ่ม */
+.btn-secondary {
+    background-color: #495057;
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.btn-secondary:hover {
+    background-color: #343a40;
+}
+
+/* legend style */
+fieldset {
+    border: 1px solid #dee2e6;
+    background: #f8f9fa;
+}
+
+legend {
+    font-weight: 600;
+    color: #495057;
+}
+
+/* input, textarea, select */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* image preview */
+img.img-fluid {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}

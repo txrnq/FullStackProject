@@ -1,0 +1,100 @@
+:root {
+    --mui-primary: #3f51b5;
+    --mui-primary-dark: #303f9f;
+    --mui-grey: #f5f5f5;
+    --mui-text: #333;
+    --mui-border: #e0e0e0;
+    --mui-radius: 12px;
+    --mui-font: 'Roboto', 'Segoe UI', sans-serif;
+}
+
+body {
+    font-family: var(--mui-font);
+    background-color: var(--mui-grey);
+}
+
+.expenses-card {
+    background-color: white;
+    border-radius: var(--mui-radius);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    border: 1px solid var(--mui-border);
+    transition: box-shadow 0.3s;
+}
+
+.expenses-card:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+.expenses-header h4 {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--mui-text);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.expenses-label {
+    font-weight: 500;
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-select,
+.form-control {
+    font-size: 14px;
+    border-radius: var(--mui-radius);
+    border: 1px solid var(--mui-border);
+    padding: 10px 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus,
+.form-select:focus {
+    outline: none;
+    border-color: var(--mui-primary);
+    box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+}
+
+.expenses-summary p {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 6px;
+}
+
+.expenses-total {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 15px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    color: var(--mui-primary-dark);
+}
+
+.expenses-button {
+    background-color: var(--mui-primary);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: var(--mui-radius);
+    font-size: 15px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.expenses-button:hover {
+    background-color: var(--mui-primary-dark);
+    cursor: pointer;
+}
+
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.no-spinner {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}

@@ -1,0 +1,40 @@
+.luxury-bg {
+  background: linear-gradient(135deg, #1c1c1e, #2c2c2e);
+  color: white;
+}
+
+.luxury-card {
+  background: #ffffff;
+  border: 2px solid gold;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.luxury-header {
+  background: linear-gradient(to right, #bfa145, #d4af37);
+  color: white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.luxury-btn {
+  background: linear-gradient(to right, #d4af37, #bfa145);
+  color: black;
+  font-weight: bold;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.luxury-btn:hover {
+  background: black;
+  color: gold;
+  border: 1px solid gold;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #333;
+}

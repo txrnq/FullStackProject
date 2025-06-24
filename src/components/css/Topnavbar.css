@@ -1,0 +1,26 @@
+.topnavbar-body {
+    width: 100%;
+    margin-top: 30px;
+   
+    background-color: #123;
+    color: white;
+    border-radius: 8px;
+
+    
+}
+
+@media (max-width: 576px) {
+    .topnavbar-body {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px;
+    }
+}
+
+.logo {
+    width: 160px;
+    height: 80px;
+    font-size: 30px;
+    margin-right: 5%;
+
+}

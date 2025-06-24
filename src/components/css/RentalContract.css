@@ -1,0 +1,26 @@
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #printableArea,
+    #printableArea * {
+        visibility: visible;
+    }
+
+    #printableArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 210mm;
+        min-height: 297mm;
+        padding: 20mm 25mm;
+        font-size: 14pt;
+        color: #000;
+        background: white;
+    }
+
+    .no-print {
+        display: none;
+    }
+}

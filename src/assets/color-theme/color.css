@@ -1,0 +1,21 @@
+.lg-color {
+    background-color: #02182e !important;
+    color: white !important;
+}
+
+.xl-color {
+    background-color: #022f56 !important;
+    color: white !important;
+}
+.l-color {
+    background-color: #488db4 !important;
+    color: white !important;
+}
+.m-color {
+    background-color: #85c4e4 !important;
+    color:  rgb(2, 47, 86)!important;
+}
+.s-color {
+    background-color: #ccdee4 !important;
+    color: rgb(72, 141, 180) !important;
+}

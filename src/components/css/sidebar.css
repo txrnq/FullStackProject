@@ -1,0 +1,76 @@
+/* Sidebar.css */
+.sidebar {
+    height: 100vh;
+    width: 350px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 56px;
+    padding-bottom: 32px;
+    background-color: #02182e;
+    z-index: 1000;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.logo {
+    width: 160px;
+    height: 80px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.sidebar-link {
+    width: 250px;
+    /* ปรับความกว้างตามต้องการ */
+    white-space: normal;
+    /* ให้ขึ้นบรรทัดใหม่ได้ */
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: absolute;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+}
+
+.sidebar-link {
+    transition: all 0.2s ease-in-out;
+}
+
+.sidebar-link.active {
+    background-color: #0d6efd;
+    /* หรือสีที่คุณต้องการ */
+    font-weight: bold;
+    border-radius: 8px;
+}
+/* Accordion Header */
+.custom-accordion .accordion-button {
+  background-color: transparent !important;
+  color: white !important;
+  box-shadow: none;
+  font-weight: 500;
+  padding-left: 0.75rem;
+  border-radius: 8px;
+}
