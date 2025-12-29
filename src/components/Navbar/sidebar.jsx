@@ -12,12 +12,12 @@ const Sidebar = () => {
 
 
     return (
-        <div className="sidebar bg-dark text-white d-flex flex-column align-items-center">
+        <div className="sidebar  bg-dark text-white d-flex flex-column pt-4">
             <div className="text-center mb-5">
                 <img src={logo1} alt="Logo" className="logo" />
             </div>
 
-            <Nav defaultActiveKey="/home" className="flex-column px-5 gap-3 fs-5 w-100">
+            <Nav defaultActiveKey="/home" className="flex-column px-4 gap-3 fs-5 w-100">
                 <Nav.Link as={NavLink} to="/dashboard" className="text-white sidebar-link">🏠 Home</Nav.Link>
                 <Nav.Link as={NavLink} to="/roomcard" className="text-white sidebar-link">🏨 Rooms</Nav.Link>
                 <Nav.Link as={NavLink} to="/Expenses" className="text-white sidebar-link">💰 Expenses</Nav.Link>

@@ -1,0 +1,6 @@
+.graph-container {
+  max-width: 100%;
+  overflow-x: hidden; /* ซ่อน scroll bar แนวนอน */
+  
+
+}
