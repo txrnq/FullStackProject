@@ -1,171 +1,119 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from "react-router-dom";
+import { rooms } from "../data/room";
 
-import room101 from '../assets/images/detail/room101.jpg';
-import room101_1 from '../assets/images/detail/room101_1.jpg';
-import room101_2 from '../assets/images/detail/room101_2.jpg';
-import room101_3 from '../assets/images/detail/room101_3.jpg';
-import room103 from '../assets/images/detail/room103.jpg';
-import room103_1 from '../assets/images/detail/room103_1.jpg';
-import room103_2 from '../assets/images/detail/room103_2.jpg';
-import room103_3 from '../assets/images/detail/room103_3.jpg';
+const RoomDetail = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-import room106 from '../assets/images/detail/room106.jpg';
-import room106_1 from '../assets/images/detail/room106_1.jpg';
-import room106_2 from '../assets/images/detail/room106_2.jpg';
-import room106_3 from '../assets/images/detail/room106_3.jpg';
-
-import room108 from '../assets/images/detail/room108.jpg';
-import room108_1 from '../assets/images/detail/room108_1.jpg';
-import room108_2 from '../assets/images/detail/room108_2.jpg';
-import room108_3 from '../assets/images/detail/room108_3.jpg';
-
-
-const rooms = [
-    { id: "A101", price: 4500, images: [ room101, room101_1, room101_2, room101_3], status: "available" },
-    { id: "A102", price: 4800, images: [room103,room103_1, room103_2, room103_3], status: "rented" },
-    { id: "A103", price: 5000, images: [room103,room103_1, room103_2, room103_3], status: "available" },
-    { id: "A104", price: 4700, images: [room101, room101_1, room101_2, room101_3], status: "rented" },
-    { id: "B101", price: 4500, images: [room101, room101_1, room101_2, room101_3], status: "rented" },
-    { id: "B102", price: 4800, images: [room106, room106_1, room106_2, room106_3], status: "available" },
-    { id: "B103", price: 5000, images: [room101, room101_1, room101_2, room101_3], status: "rented" },
-    { id: "B104", price: 4700, images: [room108, room108_1, room108_2, room108_3], status: "available" },
-];
-
-
-function RoomsDetail() {
-    const { roomId } = useParams();
-    const navigate = useNavigate();
-    const room = rooms.find((r) => r.id === roomId); if (!room) {
-        return <div className="container mt-5">ไม่พบข้อมูลห้อง</div>;
-    }
-
-    const getStatusBadge = (status) => {
-        switch (status) {
-            case "available":
-                return (
-                    <span className="badge bg-success px-3 py-2 rounded-pill">ห้องว่าง</span>
-                );
-            case "booked":
-                return (
-                    <span className="badge bg-warning text-dark px-3 py-2 rounded-pill">
-                        จองแล้ว
-                    </span>
-                );
-            case "rented":
-                return (
-                    <span className="badge bg-danger px-3 py-2 rounded-pill">เช่าแล้ว</span>
-                );
-            default:
-                return null;
-        }
-    };
-
+  // ค้นหาข้อมูลห้องที่ตรงกับ id ใน URL
+  const room = rooms.find((r) => r.id === id);
+  // กรณีหาห้องไม่พบ
+  if (!room) {
     return (
+      <div className="container mt-5 text-center">
+        <h2 className="text-danger">ไม่พบข้อมูลห้องพักที่คุณต้องการ</h2>
+        <button className="btn btn-primary mt-3" onClick={() => navigate("/")}>
+          กลับหน้าหลัก
+        </button>
+      </div>
+    );
+  }
 
-        <div
-            className="d-flex justify-content-center align-items-center"
-            style={{ minHeight: "100vh", background: "linear-gradient(to right, #e0eafc, #cfdef3)" }}
-        >
-            <div
-                className="border rounded-4 shadow-lg p-4"
-                style={{
-                    maxWidth: "1440px",
-                    width: "100%",
-                    backgroundColor: "#ffffff",
-                }}
+  return (
+    <div className="container mt-5">
+      {/* ส่วนนำทาง (Breadcrumb) */}
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <button
+              className="btn btn-link p-0 text-decoration-none"
+              onClick={() => navigate("/")}
             >
-                {/* ✅ ปุ่ม Close มุมขวาบน */}
-                <div
-                    style={{
-                        fontSize: "30px",
-                        position: "absolute",
-                        top: "160px",
-                        right: "270px",
-                        cursor: "pointer",
-                        fontWeight: "bold",
-                        color: "#d50000",
-                    }}
-                    onClick={() => window.history.back()}
-                >
-                    ✖ | Close
-                </div>
+              หน้าแรก
+            </button>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            ห้อง {room.id}
+          </li>
+        </ol>
+      </nav>
 
-                <h3 className="text-center fw-bold mb-4 text-dark">
-                    🛏️ รายละเอียดห้องพัก
-                </h3>
-
-                <div className="row">
-                    {/* รูปภาพห้อง */}
-                    <div className="col-md-6 mb-4">
-                        <div className="row g-3">
-                            {room.images.map((img, index) => (
-                                <div className="col-6" key={index}>
-                                    <img
-                                        src={img}
-                                        alt={`รูปที่ ${index + 1}`}
-                                        className="img-fluid rounded-3 shadow-sm"
-                                        style={{
-                                            height: "240px",
-                                            objectFit: "cover",
-                                            width: "100%",
-                                        }}
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* รายละเอียดห้อง */}
-                    <div className="col-md-6">
-                        <div className="mb-3">
-                            <h5 className="fw-bold text-primary">ห้อง {room.id}</h5>
-                            {getStatusBadge(room.status)}
-                        </div>
-                        <p className="text-muted fs-5 mb-4">
-                            💰 ราคา: <span className="fw-semibold">{room.price.toLocaleString()} บาท</span>/เดือน
-                        </p>
-
-                        <ul className="list-group mb-4 border">
-                            <li className="list-group-item bg-light">
-                                <strong>📐 ขนาดห้อง:</strong> 28 ตร.ม.
-                            </li>
-                            <li className="list-group-item">
-                                <strong>🪑 เฟอร์นิเจอร์:</strong> เตียง, ตู้เสื้อผ้า, โต๊ะทำงาน
-                            </li>
-                            <li className="list-group-item">
-                                <strong>🛠 สิ่งอำนวยความสะดวก:</strong> แอร์, เครื่องทำน้ำอุ่น, Wi-Fi
-                            </li>
-                            <li className="list-group-item">
-                                <strong>💼 ค่าประกัน:</strong> 1 เดือน
-                            </li>
-                        </ul>
-
-                        <div className="d-flex justify-content-center my-4">
-                            <button
-                                disabled={room.status !== "available"}
-                                className={`btn w-100 py-2 rounded-pill fs-5 ${room.status === "available" ? "btn-success" : "btn-secondary"}`}
-                                onClick={() => {
-                                    if (room.status === "available") {
-                                        window.open(`/RentalContract/${room.id}`);
-                                    }
-                                }}
-
-                            >
-                                {room.status === "available" ? "✅ ยืนยันการเช่าห้อง" : "❌ ไม่สามารถเช่าห้องได้"}
-                            </button>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+      <div className="row g-4">
+        {/* ฝั่งซ้าย: รูปภาพห้อง */}
+        <div className="col-md-7">
+          <img
+            src={room.image}
+            className="img-fluid rounded shadow-lg"
+            alt={`Room ${room.id}`}
+            style={{ width: "100%", maxHeight: "500px", objectFit: "cover" }}
+          />
         </div>
 
+        {/* ฝั่งขวา: รายละเอียดและการจอง */}
+        <div className="col-md-5">
+          <div className="card border-0 shadow-sm p-4 h-100">
+            <h1 className="fw-bold mb-2">ห้องพัก {room.id}</h1>
+            <h2 className="text-primary fw-bold mb-4">
+              {room.price?.toLocaleString()}{" "}
+              <small className="text-muted fs-6">บาท/เดือน</small>
+            </h2>
 
-    );
-}
+            <div className="mb-4">
+              <span
+                className={`badge px-3 py-2 fs-6 ${
+                  room.status === "available" ? "bg-success" : "bg-danger"
+                }`}
+              >
+                {room.status === "available"
+                  ? "สถานะ: ว่างพร้อมเช่า"
+                  : "สถานะ: มีผู้เช่าแล้ว"}
+              </span>
+            </div>
 
-export default RoomsDetail;
+            <div className="bg-light p-3 rounded mb-4">
+              <h5 className="fw-bold mb-3">สิ่งอำนวยความสะดวก</h5>
+              <div className="row g-2">
+                <div className="col-6">
+                  <i className="bi bi-check2-circle text-success me-2"></i>
+                  เครื่องปรับอากาศ
+                </div>
+                <div className="col-6">
+                  <i className="bi bi-check2-circle text-success me-2"></i>
+                  เครื่องทำน้ำอุ่น
+                </div>
+                <div className="col-6">
+                  <i className="bi bi-check2-circle text-success me-2"></i>
+                  เฟอร์นิเจอร์ครบ
+                </div>
+                <div className="col-6">
+                  <i className="bi bi-check2-circle text-success me-2"></i>ฟรี
+                  Wi-Fi
+                </div>
+              </div>
+            </div>
+
+            <div className="d-grid gap-3 mt-auto">
+              <button
+                className="btn btn-primary btn-lg shadow-sm"
+                disabled={room.status !== "available"}
+              >
+                {room.status === "available"
+                  ? "ติดต่อจองห้องพัก"
+                  : "ไม่สามารถจองได้"}
+              </button>
+              <button
+                className="btn btn-outline-secondary"
+                onClick={() => navigate(-1)}
+              >
+                ย้อนกลับ
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RoomDetail;

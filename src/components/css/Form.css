@@ -1,0 +1,46 @@
+body {
+    background-color: whitesmoke;
+    overflow: hidden;
+    /* height: 100vh; */
+}
+
+/* สำหรับหน้าจอมือถือและแท็บเล็ต (ต่ำกว่า 992px) */
+@media (max-width: 992px) {
+  .main-content-wrapper {
+    padding-left: 0 !important; /* ยกเลิก padding sidebar บนมือถือ */
+    padding-left: 10px !important; /* เพิ่มระยะห่างขอบจอแทน */
+    padding-right: 10px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  h1.display-4 {
+    font-size: 1.8rem !important; /* ลดขนาดหัวข้อไม่ให้ล้นจอ */
+  }
+}
+
+.form-floating.is-fixed > label {
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem) !important;
+  opacity: 1 !important;
+  background-color: #ffff; /* ใส่พื้นหลังสีขาวเพื่อบังเส้นขอบ */
+  padding: 5px;
+  height: auto;
+  left: 15px;
+  top: -5px; /* ปรับตำแหน่งให้ตรงกึ่งกลางเส้นขอบ */
+  z-index: 3;
+  border-radius: 16px;
+}
+
+.form-floating.is-fixed > .form-control {
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.form-floating.is-fixed > .form-control::placeholder {
+  color: transparent;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+  border-color: #2975b7 !important;
+}

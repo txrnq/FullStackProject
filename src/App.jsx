@@ -4,10 +4,10 @@ import {
   useLocation,
   UNSAFE_SingleFetchRedirectSymbol,
 } from "react-router-dom";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
 import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
-import { AnimatePresence } from "framer-motion"; 
+import { AnimatePresence } from "framer-motion";
 
 import LoginPage from "./page/LoginPage.jsx";
 import Dashboard from "./page/Dashboard.jsx";
@@ -49,34 +49,39 @@ import Report from "./components/Report.jsx";
 import Summary from "./components/Summary.jsx";
 import Repair from "./components/Repair.jsx";
 
+import ComponentTest from "./components/ComponentTest.jsx";
+import RoomListPage from "./components/RoomListPage.jsx";
+
 function App() {
   const location = useLocation();
 
-  // useEffect(() => {
-  //   const scrollablePaths = [
-  //     "/dashboard",
-  //     "/roomcard",
-  //     "/UserRole",
-  //     "/RentalContract",
-  //     "/About",
-  //     "/UserFormPaysment",
-  //     "/FormPaysment",
-  //     "/UserFormRepairs",
-  //     "/PaysmentReport",
-  //     "/RepairReport ",
-  //     "/userList",
-  //   ];
-  //   const _shouldEnableScroll = scrollablePaths.some((path) =>
-  //     location.pathname.startsWith(path)
-  //   );
+  useEffect(() => {
+    const scrollablePaths = [
+      "/dashboard",
+      "/roomcard",
+      "/UserRole",
+      "/RentalContract",
+      "/About",
+      "/UserFormPaysment",
+      "/FormPaysment",
+      "/UserFormRepairs",
+      "/PaysmentReport",
+      "/RepairReport ",
+      "/userList",
+      "/RoomListPage",
+    ];
+    const shouldEnableScroll = scrollablePaths.some((path) =>
+      location.pathname.startsWith(path)
+    );
+    document.body.style.overflow = shouldEnableScroll ? "auto" : "hidden";
 
-  //   return () => {
-  //     document.body.style.overflow = "auto";
-  //   };
-  // }, [location.pathname]);
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [location.pathname]);
 
   return (
-    <div className="flex-1 p-8 overflow-y-auto">
+    <div className="flex-1 p-8 ">
       <Sidebar />
       <AnimatePresence mode="wait">
         <motion.div
@@ -91,7 +96,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
 
             <Route path="/roomcard" element={<RoomCard />} />
-            <Route path="/rooms/:roomId" element={<RoomDetail />} />
+            <Route path="/room/:id" element={<RoomDetail />} />
 
             <Route path="/RepairReport" element={<RepairReport />} />
             <Route path="/PaysmentReport" element={<PaymentReport />} />
@@ -125,6 +130,10 @@ function App() {
             <Route path="/report" element={<Report />} />
             <Route path="/summary" element={<Summary />} />
             <Route path="/repair" element={<Repair />} />
+
+            <Route path="/RoomListPage" element={<RoomListPage />} />
+
+            <Route path="/ComponentTest" element={<ComponentTest />} />
           </Routes>
         </motion.div>
       </AnimatePresence>
