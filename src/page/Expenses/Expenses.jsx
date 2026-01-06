@@ -1,18 +1,7 @@
 import React, { useState } from 'react';
-import Sidebar from '../../components/Navbar/sidebar';
+import { rooms } from '../../data/room';
 import '../../components/css/Expenses.css';
-import { motion } from 'framer-motion';
 function Expenses() {
-    const rooms = [
-        { id: 'A101', price: 4500, },
-        { id: 'A102', price: 4800, },
-        { id: 'A103', price: 5000, },
-        { id: 'A104', price: 4700, },
-        { id: 'B101', price: 4500, },
-        { id: 'B102', price: 4800, },
-        { id: 'B103', price: 5000, },
-        { id: 'B104', price: 4700, },
-    ];
 
     const [selectedRoomId, setSelectedRoomId] = useState('');
     const [roomPrice, setRoomPrice] = useState(0);
@@ -80,15 +69,7 @@ function Expenses() {
 
     return (
         <div style={{ marginTop: '300px', marginLeft: '300px' }}>
-            <Sidebar />
-
-            <motion.div
-                className="flex-grow-1 d-flex flex-column justify-content-center "
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
-            >
+           
 
                 <div className="mt-5 d-flex justify-content-center ">
                     <div className="expenses-card bg-white border rounded" style={{ maxWidth: '800px', width: '100%' }}>
@@ -148,7 +129,6 @@ function Expenses() {
                     </div>
                 </div>
 
-            </motion.div>
         </div>
     );
 }

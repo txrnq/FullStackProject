@@ -25,5 +25,5 @@ app.use('/api/repairs', repairRoutes);
 
 
 app.listen(port, (err) => {
-  console.log(`Server running on port ${port}`, err);
+  console.log(`🔥 Server running on port ${port}`, err);
 });
